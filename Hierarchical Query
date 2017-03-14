@@ -1,0 +1,8 @@
+# Hieararchial queries establish parent-child relationship
+SELECT employee_id, last_name, manager_id
+   FROM employees
+   CONNECT BY PRIOR employee_id = manager_id;
+# LEVEL pseudocolumn to show parent and child rows:
+   SELECT employee_id, last_name, manager_id, LEVEL
+   FROM employees
+   CONNECT BY PRIOR employee_id = manager_id;
